@@ -19,15 +19,7 @@ namespace HangmanGame
             Rules.ShowRules();
             Console.WriteLine("Type 'exit' at any time to leave the game.");
 
-            
-            
-            using HttpResponseMessage response = await client.GetAsync("https://localhost:7033/api/Words");
-                response.EnsureSuccessStatusCode();
-            List<Word> responseBody = await response.Content.ReadFromJsonAsync<List<Word>>();
-
-            //need to configure this to have different options; standard, hard, all; depending on user selection. 
-            //turn this into methods
-            string hangmanWord = responseBody.FirstOrDefault().Name;
+            string hangmanWord = await DifficultyLevel.ChooseDifficulty();
 
             List <char> correctCharacters = new List<char>();
             correctCharacters.AddRange(hangmanWord);

@@ -32,6 +32,19 @@ namespace HangmanAPI.Controllers
             return await _context.Words.ToListAsync();
         }
 
+
+        // GET: 
+        [HttpGet("difficulty/{difficulty}")]
+        public async Task<ActionResult<IEnumerable<Word>>> GetStandardWords(string difficulty)
+        {
+            if (_context.Words == null)
+            {
+                return NotFound();
+            }
+            return await _context.Words.Where(w => w.Difficulty == difficulty).ToListAsync();
+        }
+
+
         // GET: api/Words/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Word>> GetWord(int id)
