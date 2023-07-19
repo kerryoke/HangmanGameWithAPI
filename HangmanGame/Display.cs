@@ -27,7 +27,6 @@ namespace HangmanGame
                 case 7:
                     Display.SeventhWrongAnswer();
                     Console.WriteLine("Sorry, you're out of guesses! Better luck next time.");
-                    Console.ReadKey();
                     break;
 
             }
