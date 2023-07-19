@@ -18,9 +18,13 @@ namespace HangmanGame
             Rules.ShowRules();
             Console.WriteLine("Type 'exit' at any time to leave the game.");
 
+            int wins = 0;
+            int numberofGames = 0;
             bool playAgain = false;
             do
             {
+                numberofGames++;
+
                 string hangmanWord = await DifficultyLevel.ChooseDifficulty();
 
                 List<char> correctCharacters = new List<char>();
@@ -79,9 +83,11 @@ namespace HangmanGame
 
                             Display.DisplayHangmanImage(incorrectGuesses);
 
+                            
                             string wordInProgressNoSpaces = wordInProgress.Replace(" ", "");
                             if (wordInProgressNoSpaces == hangmanWord)
                             {
+                                wins++;
                                 Console.WriteLine("Congratulations, you won!");
                                 break;
                             }
@@ -89,6 +95,7 @@ namespace HangmanGame
                     }
 
                 }
+                
                 Console.WriteLine("Do you want to play again? y/n");
                 if (Console.ReadLine() == "y")
                 {
@@ -100,6 +107,9 @@ namespace HangmanGame
                 }
 
             } while (playAgain);
+
+            Console.WriteLine($"You won {wins} times out of {numberofGames} games!");
+            Console.ReadKey();
 
 
 
