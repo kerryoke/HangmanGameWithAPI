@@ -26,9 +26,9 @@ namespace HangmanAPI
 
         public List<Word> ReadJsonFile()
         {
-            using StreamReader streamReader = new(@"WordFile.json");
+            using StreamReader streamReader = new(@"Resources//WordFile.json");
             var json = streamReader.ReadToEnd();
-            List<Word> words = JsonSerializer.Deserialize<List<Word>>(json);
+            List<Word> words = JsonSerializer.Deserialize<List<Word>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true});
             return words;
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,6 +39,7 @@ namespace HangmanAPI
                 modelBuilder.Entity<Word>().HasData(word);
             });
             base.OnModelCreating(modelBuilder);
+
         }
     }
 

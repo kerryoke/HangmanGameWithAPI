@@ -1,4 +1,6 @@
-﻿namespace HangmanAPI.Models
+﻿using System.Text.Json.Serialization;
+
+namespace HangmanAPI.Models
 {
     public class Word
     {
