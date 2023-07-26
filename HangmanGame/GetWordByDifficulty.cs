@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Diagnostics.Contracts;
 using System.ComponentModel;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace HangmanGame
 {
@@ -46,6 +47,14 @@ namespace HangmanGame
             var random = new Random();
             int index = random.Next(responseBody.Count);
             return responseBody[index].Name;
+        }
+
+         public static async Task<string> GetAllForJson()
+        {
+            using HttpResponseMessage response = await client.GetAsync("https://localhost:7033/api/Words");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            return responseBody;
         }
 
     }

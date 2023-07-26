@@ -33,7 +33,7 @@ namespace HangmanAPI.Controllers
         }
 
 
-        // GET: 
+        // GET: api/Words/difficulty/standard
         [HttpGet("difficulty/{difficulty}")]
         public async Task<ActionResult<IEnumerable<Word>>> GetStandardWords(string difficulty)
         {

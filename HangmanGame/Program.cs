@@ -14,6 +14,7 @@ namespace HangmanGame
     {
         static async Task Main(string[] args)
         {
+            //await MakeJSONFile.ConvertToJson();
             Console.WriteLine("Hello! Welcome to Hangman.");
             Rules.ShowRules();
             Console.WriteLine("Type 'exit' at any time to leave the game.");
@@ -108,7 +109,7 @@ namespace HangmanGame
 
             } while (playAgain);
 
-            Console.WriteLine($"You won {wins} times out of {numberofGames} games!");
+            Console.WriteLine($"You won {wins} out of {numberofGames} games!");
             Console.ReadKey();
 
 
